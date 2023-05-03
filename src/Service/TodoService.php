@@ -2,35 +2,33 @@
 
 namespace App\Service;
 
-use App\Repository\TodoCookieRepository;
-use App\Repository\TodoFileRepository;
 use App\Repository\TodoSqlRepository;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class TodoService
 {
-    private TodoSqlRepository $Repository;
-    public function __construct(){
-        $this->Repository = new TodoSqlRepository();
+    private TodoSqlRepository $repository;
+
+    public function __construct($repository){
+        $this->repository = $repository;
     }
-    public function add_todo(string $sanitaseNameOfSkill)
+    public function addTodo(string $sanitiseNameOfSkill): void
     {
-        $allTodos = $this->Repository->get_all_todos();
+        $allTodos = $this->repository->getAllTodos();
         foreach ($allTodos as $todo) {
-            if ($sanitaseNameOfSkill === $todo) {
+            if ($sanitiseNameOfSkill === $todo) {
                 return;
             }
         }
-        $this->Repository->save_todo($sanitaseNameOfSkill);
+        $this->repository->addTodo($sanitiseNameOfSkill);
     }
 
-    public function delete_todo($nameOfSkills)
+    public function deleteTodo($nameOfSkills): void
     {
-        $this->Repository->delete_todo($nameOfSkills);
+        $this->repository->deleteTodo($nameOfSkills);
     }
 
-    public function get_all_todos()
+    public function getAllTodos()
     {
-        return $this->Repository->get_all_todos();
+        return $this->repository->getAllTodos();
     }
 }

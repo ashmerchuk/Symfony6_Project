@@ -6,12 +6,12 @@ controllers:
 list_items:
     path: /list
     methods: GET
-    controller: App\Controller\HelloController::list_items
+    controller: App\Controller\HelloController::listItems
 save_items:
-    path: /save_items
+    path: /saveItems
     methods: POST
-    controller: App\Controller\HelloController::add_items
+    controller: App\Controller\HelloController::addItems
 delete_items:
-    path: /delete_items
+    path: /deleteItems
     methods: POST
-    controller: App\Controller\HelloController::delete_items
+    controller: App\Controller\HelloController::deleteItems

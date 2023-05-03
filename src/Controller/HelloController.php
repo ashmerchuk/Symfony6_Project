@@ -2,40 +2,43 @@
 
 namespace App\Controller;
 
-use App\Service\Bike;
+use App\Repository\TodoSqlRepository;
 use App\Service\TodoService;
+use PDO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use function PHPUnit\Framework\isEmpty;
 
 class HelloController extends AbstractController
 {
+    public TodoSqlRepository $repository;
+    public TodoService $service;
+    public function __construct(){
+        $pdo = new PDO('sqlite:./sk.db');
+        $this->repository = new TodoSqlRepository($pdo);
+        $this->service = new TodoService($this->repository);
+    }
 
-    public function list_items(Request $request): Response
+    public function listItems(): Response
     {
-        $todoService = new TodoService();
-
         return $this->render(
             'hello/hello.html.twig',
             [
-                'skills' =>  $todoService->get_all_todos(),
+                'skills' =>  $this->service->getAllTodos(),
             ]
         );
     }
-    public function add_items(Request $request)
+    public function addItems(Request $request): RedirectResponse
     {
         $nameOfSkill = $request->get('nameOfSkill');
-        $todoService = new TodoService();
-        $todoService->add_todo($nameOfSkill);
+        $this->service->addTodo($nameOfSkill);
         return new RedirectResponse('/list');
     }
-    public function delete_items(Request $request)
+    public function deleteItems(Request $request): RedirectResponse
     {
         $indexOfRemoving = $request->get('name');
-        $todoService = new TodoService();
-        $todoService->delete_todo($indexOfRemoving);
+        $this->service->deleteTodo($indexOfRemoving);
         return new RedirectResponse('/list');
     }
 }
