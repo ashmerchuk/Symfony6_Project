@@ -6,16 +6,21 @@ use PDO;
 
 class TodoSqlRepository
 {
+    public function __construct(private readonly PDO $pdo){
 
-    private PDO $pdo;
+    }
 
-    public function __construct(PDO $pdo){
-        $this->pdo =  $pdo;
+    public function createTable(): void
+    {
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS allSKills (id  INTEGER PRIMARY KEY AUTOINCREMENT, nameOfTodo TEXT)");
     }
+
     public function getAllTodos() :array
     {
-        $stmt = $this->pdo->prepare('SELECT nameOfTodo FROM allSKills');
+        $stmt = $this->pdo->prepare('SELECT DISTINCT nameOfTodo FROM allSKills');
+        if ($stmt->rowCount() == 0) {
+            $this->createTable();
+        }
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     }

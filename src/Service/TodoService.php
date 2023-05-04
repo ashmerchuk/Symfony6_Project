@@ -13,12 +13,6 @@ class TodoService
     }
     public function addTodo(string $sanitiseNameOfSkill): void
     {
-        $allTodos = $this->repository->getAllTodos();
-        foreach ($allTodos as $todo) {
-            if ($sanitiseNameOfSkill === $todo) {
-                return;
-            }
-        }
         $this->repository->addTodo($sanitiseNameOfSkill);
     }
 

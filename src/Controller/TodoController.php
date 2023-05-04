@@ -10,10 +10,11 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
-class HelloController extends AbstractController
+class TodoController extends AbstractController
 {
-    public TodoSqlRepository $repository;
-    public TodoService $service;
+    private TodoSqlRepository $repository;
+    private TodoService $service;
+
     public function __construct(){
         $pdo = new PDO('sqlite:./sk.db');
         $this->repository = new TodoSqlRepository($pdo);
@@ -29,12 +30,14 @@ class HelloController extends AbstractController
             ]
         );
     }
+
     public function addItems(Request $request): RedirectResponse
     {
         $nameOfSkill = $request->get('nameOfSkill');
         $this->service->addTodo($nameOfSkill);
         return new RedirectResponse('/list');
     }
+
     public function deleteItems(Request $request): RedirectResponse
     {
         $indexOfRemoving = $request->get('name');
