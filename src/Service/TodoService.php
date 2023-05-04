@@ -8,7 +8,8 @@ class TodoService
 {
     private TodoSqlRepository $repository;
 
-    public function __construct($repository){
+    public function __construct(TodoSqlRepository $repository)
+    {
         $this->repository = $repository;
     }
     public function addTodo(string $sanitiseNameOfSkill): void
