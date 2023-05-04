@@ -6,12 +6,11 @@ use App\Repository\TodoSqlRepository;
 
 class TodoService
 {
-    private TodoSqlRepository $repository;
-
-    public function __construct(TodoSqlRepository $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        private readonly TodoSqlRepository $repository
+    ){
     }
+
     public function addTodo(string $sanitiseNameOfSkill): void
     {
         $this->repository->addTodo($sanitiseNameOfSkill);

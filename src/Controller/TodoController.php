@@ -12,12 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TodoController extends AbstractController
 {
-    private TodoService $service;
-
     public function __construct(
-        TodoService $service,
-    ){
-        $this->service = $service;
+        private readonly TodoService $service){
     }
 
     public function listItems(): Response
@@ -42,9 +38,5 @@ class TodoController extends AbstractController
         $indexOfRemoving = $request->get('name');
         $this->service->deleteTodo($indexOfRemoving);
         return new RedirectResponse('/list');
-    }
-
-    private function service(TodoSqlRepository $repository)
-    {
     }
 }
