@@ -12,12 +12,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TodoController extends AbstractController
 {
-    private TodoService $service;
-
-    public function __construct(
-        TodoService $service,
+public function __construct(
+        private TodoService $service,
     ){
-        $this->service = $service;
     }
 
     public function listItems(): Response
