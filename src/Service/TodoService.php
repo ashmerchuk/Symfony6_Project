@@ -21,7 +21,7 @@ class TodoService
         $this->repository->deleteTodo($nameOfSkills);
     }
 
-    public function getAllTodos()
+    public function getAllTodos(): array
     {
         return $this->repository->getAllTodos();
     }
