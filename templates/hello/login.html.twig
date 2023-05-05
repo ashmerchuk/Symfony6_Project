@@ -1,0 +1,31 @@
+<div>
+    <h1 style="color: orange">Hello moebel!</h1>
+    <h2>Sign Up</h2>
+    <form method="post" action="{{ path('sign_up') }}">
+        <input type="email" name="signUpEmail" placeholder="Your email">
+        <input type="password" name="signUpPassword" placeholder="Your password">
+        <button type="submit">Sign Up</button>
+    </form>
+    {% for message in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+    {% for message in app.session.flashbag.get('success') %}
+        <div class="alert alert-success">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+    <h2>Log In</h2>
+    <p>(If you have already account)</p>
+    <form method="post" action="{{ path('log_in_check') }}">
+        <input type="email" name="logInEmail" placeholder="Your email">
+        <input type="password" name="logInPassword" placeholder="Your password">
+        <button type="submit">Log in</button>
+    </form>
+    {% for message in app.session.flashbag.get('login_error') %}
+        <div class="alert alert-danger">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+</div>

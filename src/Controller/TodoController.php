@@ -17,6 +17,9 @@ class TodoController extends AbstractController
 
     public function listItems(): Response
     {
+        if($_COOKIE['userId'] == null){
+            return new RedirectResponse('/log_in');
+        }
         return $this->render(
             'hello/hello.html.twig',
             [

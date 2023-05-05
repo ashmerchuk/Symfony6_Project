@@ -23,7 +23,8 @@
         "symfony/twig-bundle": "6.2.*",
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "*",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "ext-http": "*"
     },
     "config": {
         "allow-plugins": {

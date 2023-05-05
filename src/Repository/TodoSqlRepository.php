@@ -12,12 +12,13 @@ class TodoSqlRepository
 
     public function createTable(): void
     {
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS allSKills (id  INTEGER PRIMARY KEY AUTOINCREMENT, nameOfTodo TEXT)");
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS allSKills (id  INTEGER PRIMARY KEY AUTOINCREMENT, nameOfTodo TEXT, userId INT)");
     }
 
     public function getAllTodos() :array
     {
-        $stmt = $this->pdo->prepare('SELECT DISTINCT nameOfTodo FROM allSKills');
+        $userId = $_COOKIE['userId'];
+        $stmt = $this->pdo->prepare("SELECT DISTINCT nameOfTodo FROM allSKills WHERE userId = '$userId'");
         if ($stmt->rowCount() == 0) {
             $this->createTable();
         }
@@ -27,8 +28,9 @@ class TodoSqlRepository
 
     public function addTodo(string $todo) :void
     {
-        $stmt = $this->pdo->prepare('INSERT INTO allSKills (nameOfTodo) VALUES (:todo)');
+        $stmt = $this->pdo->prepare('INSERT INTO allSKills (nameOfTodo, userId) VALUES (:todo, :userId)');
         $stmt->bindParam(':todo', $todo);
+        $stmt->bindParam(':userId', $_COOKIE['userId']);
         $stmt->execute();
     }
 
