@@ -11,7 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 class TodoController extends AbstractController
 {
     public function __construct(
-        private readonly TodoService $service){
+        private readonly TodoService $service
+    ){
     }
 
     public function listItems(): Response
