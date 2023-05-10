@@ -17,7 +17,7 @@ class LoginController extends AbstractController
     ){
     }
 
-    function logIn () : Response{
+    function logIn(): Response {
         return $this->render(
             'hello/login.html.twig'
         );
