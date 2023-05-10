@@ -27,7 +27,7 @@ class LoginController extends AbstractController
         $usersEmail = $request->get('logInEmail');
         $usersPassword = $request->get('logInPassword');
         $userId = $this->service->checkUser($usersEmail, $usersPassword);
-        if($userId == null){
+        if($userId === null) {
             $session->getFlashBag()->add('login_error', 'Invalid credentials. Wrong Email or Password.');
             return new RedirectResponse('/log_in');
         }
