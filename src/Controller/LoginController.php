@@ -23,7 +23,7 @@ class LoginController extends AbstractController
         );
     }
 
-    function logInCheck (Request $request, SessionInterface $session) : Response{
+    function logInCheck(Request $request, SessionInterface $session): Response {
         $usersEmail = $request->get('logInEmail');
         $usersPassword = $request->get('logInPassword');
         $userId = $this->service->checkUser($usersEmail, $usersPassword);
