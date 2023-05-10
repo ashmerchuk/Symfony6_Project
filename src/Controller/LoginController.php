@@ -16,6 +16,7 @@ class LoginController extends AbstractController
         private readonly LoginService $service,
     ){
     }
+
     function logIn () : Response{
         return $this->render(
             'hello/login.html.twig'
