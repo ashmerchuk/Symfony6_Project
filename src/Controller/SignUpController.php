@@ -20,11 +20,10 @@ class SignUpController extends AbstractController
         $usersEmail = $request->get('signUpEmail');
         $usersPassword = $request->get('signUpPassword');
         if($this->service->addUser($usersEmail, $usersPassword)){
-//            dd($this->service->addUser($usersEmail, $usersPassword));
             $session->getFlashBag()->add('success', 'You signed up successfully');
             return new RedirectResponse('/log_in');
         }
-        $session->getFlashBag()->add('error', 'Invalid credentials. Email and Password should be at least 3 characters and Email, should be unique. Please try again.');
+        $session->getFlashBag()->add('error', 'Invalid credentials. Email should be unique. Please try again.');
         return new RedirectResponse('/log_in');
     }
 }

@@ -11,8 +11,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class LoginController extends AbstractController
 {
+
     public function __construct(
-        private readonly LoginService $service
+        private readonly LoginService $service,
     ){
     }
     function logIn () : Response{
@@ -29,12 +30,13 @@ class LoginController extends AbstractController
             $session->getFlashBag()->add('login_error', 'Invalid credentials. Wrong Email or Password.');
             return new RedirectResponse('/log_in');
         }
-        setcookie('userId', $userId);
+        session_start();
+        $_SESSION['user_id'] = $userId;
         return new RedirectResponse('/list');
     }
 
     function logOut () : Response{
-        setcookie('userId', null);
+        unset($_SESSION['email'], $_SESSION['password'], $_SESSION['userId']);
         return new RedirectResponse('/log_in');
     }
 }

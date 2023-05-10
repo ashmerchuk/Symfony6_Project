@@ -1,13 +1,10 @@
 <div>
-    <h1 style="color: orange">Hello moebel!</h1>
+    <h1 style="color: orange">Hello {{ name[0] }}</h1>
     <a href="{{ path('log_out') }}" style="float: right;">
         <button>Log out</button>
     </a>
     <h2>Todos:</h2>
 
-{#    <a href="{{ path('log_in') }}" style="float: right;">#}
-{#        <button>To Login page</button>#}
-{#    </a>#}
     {% for skill in skills%}
         <ul>
             <li>

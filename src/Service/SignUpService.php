@@ -14,7 +14,6 @@ class SignUpService
 
     public function addUser(string $sanitiseEmail, string $sanitisePassword): bool
     {
-//        $password_hash = password_hash($sanitisePassword, PASSWORD_BCRYPT);
         return $this->repository->addUser($sanitiseEmail, $sanitisePassword);
     }
 }

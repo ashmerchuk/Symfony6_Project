@@ -25,4 +25,9 @@ class TodoService
     {
         return $this->repository->getAllTodos();
     }
+    public function getUserName(): array
+    {
+        return $this->repository->getUserName();
+    }
+
 }
