@@ -16,7 +16,8 @@ class SignUpController extends AbstractController
         private readonly SignUpService $service
     ){
     }
-    function signUp (Request $request, SessionInterface $session) : Response{
+
+    function signUp(Request $request, SessionInterface $session): Response {
         $usersEmail = $request->get('signUpEmail');
         $usersPassword = $request->get('signUpPassword');
         if($this->service->addUser($usersEmail, $usersPassword)){
