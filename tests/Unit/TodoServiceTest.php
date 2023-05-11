@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Unit;
+
 use PHPUnit\Framework\TestCase;
 use App\Repository\TodoSqlRepository;
 use App\Service\TodoService;
 use PDO;
+
 class TodoServiceTest extends TestCase
 {
     private TodoService $service;
@@ -37,7 +41,7 @@ class TodoServiceTest extends TestCase
         $this->service->addTodo('todo3');
 
         $allTodos = $this->service->getAllTodos();
-        foreach (['todo1', 'todo2','todo3']  as $todo){
+        foreach (['todo1', 'todo2','todo3']  as $todo) {
             $this->assertContains($todo, $allTodos);
         }
     }

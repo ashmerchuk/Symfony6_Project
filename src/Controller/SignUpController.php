@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Service\SignUpService;
@@ -9,18 +11,17 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
 class SignUpController extends AbstractController
 {
     public function __construct(
-        private readonly SignUpService $service
-    ){
+        private readonly SignUpService $signUpService
+    ) {
     }
-
-    function signUp(Request $request, SessionInterface $session): Response {
+    public function signUp(Request $request, SessionInterface $session): Response
+    {
         $usersEmail = $request->get('signUpEmail');
         $usersPassword = $request->get('signUpPassword');
-        if($this->service->addUser($usersEmail, $usersPassword)){
+        if($this->signUpService->addUser($usersEmail, $usersPassword)) {
             $session->getFlashBag()->add('success', 'You signed up successfully');
             return new RedirectResponse('/log_in');
         }

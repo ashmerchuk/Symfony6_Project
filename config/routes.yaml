@@ -17,11 +17,11 @@ delete_items:
     controller: App\Controller\TodoController::deleteItems
 sign_up:
     path: /sign_up
-    methods: [GET, POST]
+    methods: POST
     controller: App\Controller\SignUpController::signUp
 log_in:
     path: /log_in
-    methods: [GET, POST]
+    methods: GET
     controller: App\Controller\LoginController::logIn
 log_in_check:
     path: /log_in_check

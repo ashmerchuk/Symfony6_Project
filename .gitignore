@@ -17,3 +17,8 @@
 .phpunit.cache/test-results
 phpunit.xml.dist.bak
 ###< phpunit/phpunit ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###

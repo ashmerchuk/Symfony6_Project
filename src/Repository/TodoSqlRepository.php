@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use PDO;
@@ -26,10 +28,12 @@ class TodoSqlRepository
         return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     }
 
-    public function getUserName(): array
+    public function getUserFromSession(): array
     {
         $userId = $_SESSION['user_id'];
-        $stmt = $this->pdo->prepare("SELECT email FROM users WHERE id = '$userId'");
+        $stmt = $this->pdo->prepare("SELECT email FROM users WHERE id = :userId");
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     }
@@ -46,8 +50,11 @@ class TodoSqlRepository
 
     public function deleteTodo(string $todo): void
     {
-        $stmt = $this->pdo->prepare('DELETE FROM allSKills WHERE nameOfTodo = :todo');
+        session_start();
+        $userId = $_SESSION['user_id'];
+        $stmt = $this->pdo->prepare('DELETE FROM allSKills WHERE nameOfTodo = :todo AND userId = :userId');
         $stmt->bindParam(':todo', $todo);
+        $stmt->bindParam(':userId', $userId);
         $stmt->execute();
     }
 }

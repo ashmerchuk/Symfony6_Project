@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Repository;
 
 use App\Repository\TodoSqlRepository;
@@ -81,4 +83,3 @@ class TodoSqlRepositoryTest extends TestCase
         $this->sut->addTodo($todo);
     }
 }
-

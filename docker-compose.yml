@@ -15,6 +15,7 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - .:/var/www/html
+      - ~/.ssh:/root/.ssh:ro
 
 ###> doctrine/doctrine-bundle ###
   database:

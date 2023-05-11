@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Service\LoginService;
@@ -11,23 +13,23 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class LoginController extends AbstractController
 {
-
     public function __construct(
-        private readonly LoginService $service,
-    ){
+        private readonly LoginService $loginService,
+    ) {
     }
-
-    function logIn(): Response {
+    public function logIn(): Response
+    {
         return $this->render(
             'hello/login.html.twig'
         );
     }
 
-    function logInCheck(Request $request, SessionInterface $session): Response {
+    public function logInCheck(Request $request, SessionInterface $session): Response
+    {
         $usersEmail = $request->get('logInEmail');
         $usersPassword = $request->get('logInPassword');
-        $userId = $this->service->checkUser($usersEmail, $usersPassword);
-        if($userId === null) {
+        $userId = $this->loginService->checkUser($usersEmail, $usersPassword);
+        if($userId == null) {
             $session->getFlashBag()->add('login_error', 'Invalid credentials. Wrong Email or Password.');
             return new RedirectResponse('/log_in');
         }
@@ -36,7 +38,8 @@ class LoginController extends AbstractController
         return new RedirectResponse('/list');
     }
 
-    function logOut () : Response{
+    public function logOut(): Response
+    {
         unset($_SESSION['email'], $_SESSION['password'], $_SESSION['userId']);
         return new RedirectResponse('/log_in');
     }

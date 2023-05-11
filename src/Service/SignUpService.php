@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Repository\SignUpSqlRepository;
-use App\Repository\TodoSqlRepository;
 
 class SignUpService
 {
     public function __construct(
         private readonly SignUpSqlRepository $repository
-    ){
+    ) {
     }
 
     public function addUser(string $sanitiseEmail, string $sanitisePassword): bool

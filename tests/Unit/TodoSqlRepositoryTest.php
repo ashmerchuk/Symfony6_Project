@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Unit;
+
 use PDO;
 use PHPUnit\Framework\TestCase;
 use App\Repository\TodoSqlRepository;
 use App\Service\TodoService;
+
 class TodoSqlRepositoryTest extends TestCase
 {
     private TodoSqlRepository $repository;
@@ -38,7 +42,7 @@ class TodoSqlRepositoryTest extends TestCase
         $this->repository->addTodo('todo3');
 
         $allTodos = $this->repository->getAllTodos();
-        foreach (['todo1', 'todo2','todo3']  as $todo){
+        foreach (['todo1', 'todo2','todo3']  as $todo) {
             $this->assertContains($todo, $allTodos);
         }
     }

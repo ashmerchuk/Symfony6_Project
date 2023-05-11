@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Service\TodoService;
@@ -12,20 +14,20 @@ class TodoController extends AbstractController
 {
     public function __construct(
         private readonly TodoService $service
-    ){
+    ) {
     }
 
     public function listItems(): Response
     {
         session_start();
-        if(session_status() == null){
+        if($_SESSION == null) {
             return new RedirectResponse('/log_in');
         }
         return $this->render(
             'hello/hello.html.twig',
             [
                 'skills' =>  $this->service->getAllTodos(),
-                'name' =>  $this->service->getUserName(),
+                'name' =>  $this->service->getUserFromSession(),
             ]
         );
     }

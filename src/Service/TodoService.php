@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Service;
 
 use App\Repository\TodoSqlRepository;
@@ -8,7 +10,7 @@ class TodoService
 {
     public function __construct(
         private readonly TodoSqlRepository $repository
-    ){
+    ) {
     }
 
     public function addTodo(string $sanitiseNameOfSkill): void
@@ -25,9 +27,9 @@ class TodoService
     {
         return $this->repository->getAllTodos();
     }
-    public function getUserName(): array
+    public function getUserFromSession(): array
     {
-        return $this->repository->getUserName();
+        return $this->repository->getUserFromSession();
     }
 
 }

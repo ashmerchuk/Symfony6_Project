@@ -1,5 +1,9 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Test\Unit\Service;
+
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
 use App\Service\TodoService;
@@ -8,8 +12,6 @@ use PHPUnit\Framework\MockObject\MockObject;
 
 class TodoServiceTest extends TestCase
 {
-
-    /** @var TodoSqlRepository|MockObject */
     private TodoSqlRepository|MockObject $repositoryMock;
     private TodoService $service;
 
@@ -54,4 +56,3 @@ class TodoServiceTest extends TestCase
         $this->assertEquals($expectedResult, $actualResult, 'Expected and actual results do not match');
     }
 }
-

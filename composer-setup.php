@@ -1,14 +1,6 @@
 <?php
 
-/*
- * This file is part of Composer.
- *
- * (c) Nils Adermann <naderman@naderman.de>
- *     Jordi Boggiano <j.boggiano@seld.be>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 setupEnvironment();
 process(is_array($argv) ? $argv : array());
@@ -676,7 +668,6 @@ class Installer
      *
      * @param bool $quiet Quiet mode
      * @param bool $disableTls Bypass tls
-     * @param mixed $cafile Path to CA bundle, or false
      */
     public function __construct($quiet, $disableTls, $caFile)
     {
@@ -1335,8 +1326,8 @@ class NoProxyPattern
     }
 }
 
-class HttpClient {
-
+class HttpClient
+{
     private $options = array('http' => array());
     private $disableTls = false;
 

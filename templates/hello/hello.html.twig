@@ -1,8 +1,8 @@
 <div>
     <h1 style="color: rgb(239, 105, 66);">Hello {{ name[0] }}</h1>
-    <a href="{{ path('log_out') }}" style="float: right;">
-        <button>Log out</button>
-    </a>
+    <form action="{{ path('log_out') }}" method="post" style="float: right;">
+        <button type="submit">Log out</button>
+    </form>
     <h2>Todos:</h2>
 
     {% for skill in skills%}
