@@ -1,5 +1,8 @@
 <div>
     <h1 style="color: rgb(239, 105, 66);">Hello moebel!</h1>
+    <form action="{{ path('table') }}" method="post" style="float: right;">
+        <button type="submit">Go to table</button>
+    </form>
     <h2>Sign Up</h2>
     <form method="post" action="{{ path('sign_up') }}">
         <input type="email" name="signUpEmail" placeholder="Your email">
