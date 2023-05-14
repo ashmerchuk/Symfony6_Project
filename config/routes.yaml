@@ -31,3 +31,12 @@ log_out:
     path: /log_out
     methods: [GET, POST]
     controller: App\Controller\LoginController::logOut
+table:
+    path: /table
+    methods: [GET, POST]
+    controller: App\Controller\TableController::showSkillsFromAllUsers
+some_users_todo:
+    path: /some_users_todo
+    methods: [GET, POST]
+    controller: App\Controller\SomeUsersTodoController::showSomeUsersTodo
+    

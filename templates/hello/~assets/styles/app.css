@@ -1,0 +1,20 @@
+@import '~bootstrap';
+body {
+    background-color: lightgray;
+}
+h3{
+    text-align: center;
+    color: #1d4ed8;
+}
+h1{
+    text-align: center;
+    color: #cf00ff;
+}
+
+h2{
+    text-align: center;
+    color: #ffae00;
+}
+.moin{
+    color: green;
+}
