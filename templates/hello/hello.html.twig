@@ -1,26 +1,28 @@
-<div>
-    <h1 style="color: rgb(239, 105, 66);">Hello {{ name[0] }}</h1>
-    <form action="{{ path('log_out') }}" method="post" style="float: right;">
-        <button type="submit">Log out</button>
-    </form>
-    <h2>Todos:</h2>
+{% extends './base.html.twig' %}
+        {% block body %}
+            <div>
+                <h1>Hello {{ name[0] }}</h1>
+                <form action="{{ path('log_out') }}" method="post" style="float: right;">
+                    <button class="btn btn-outline-primary" type="submit">Log out</button>
+                </form>
+                <h2>Todos:</h2>
 
-    {% for skill in skills%}
-        <ul>
-            <li>
-                {% autoescape false %}
-                    <form method="post" action="{{ path('delete_items') }}">
-                        {{ skill }}
-                        <input type="hidden" name="name" value="{{ skill }}">
-                        <button type="submit"> Delete! </button>
-                    </form>
-                {% endautoescape %}
-            </li>
-        </ul>
-    {% endfor %}
-    <form method="post" action="{{ path('save_items') }}">
-        <input type="text" name="nameOfSkill" placeholder="Add new skills">
-        <button type="submit">Add</button>
-    </form>
-    {#    <script>        alert("haha i hacked you")    </script>#}
-</div>
+                {% for skill in skills %}
+                    <ul>
+                        <li>
+                            {% autoescape false %}
+                                <form method="post" action="{{ path('delete_items') }}">
+                                    {{ skill }}
+                                    <input type="hidden" name="name" value="{{ skill }}">
+                                    <button class="btn btn-outline-primary" type="submit"> Delete!</button>
+                                </form>
+                            {% endautoescape %}
+                        </li>
+                    </ul>
+                {% endfor %}
+                <form method="post" action="{{ path('save_items') }}">
+                    <input type="text" name="nameOfSkill" placeholder="Add new skills">
+                    <button class="btn btn-outline-primary" type="submit">Add</button>
+                </form>
+            </div>
+        {% endblock %}
