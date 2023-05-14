@@ -1,0 +1,15 @@
+@import '~bootstrap';
+
+h1{
+    text-align: center;
+    color: rgb(239, 105, 66);
+}
+h3{
+    text-align: center;
+}
+th{
+    text-align: center;
+    color: rgb(239, 105, 66);
+}
+
+

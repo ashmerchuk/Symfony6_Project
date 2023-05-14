@@ -1,7 +1,9 @@
+{% extends './base.html.twig' %}
+{% block body %}
 <div>
     <h1 style="color: rgb(239, 105, 66);">Hello {{ name[0] }}</h1>
     <a href="{{ path('log_out') }}" style="float: right;">
-        <button>Log out</button>
+        <button class="btn btn-outline-primary">Log out</button>
     </a>
     <h2>Todos:</h2>
 
@@ -12,7 +14,7 @@
                     <form method="post" action="{{ path('delete_items') }}">
                         {{ skill }}
                         <input type="hidden" name="name" value="{{ skill }}">
-                        <button type="submit"> Delete! </button>
+                        <button class="btn btn-outline-primary" type="submit"> Delete! </button>
                     </form>
                 {% endautoescape %}
             </li>
@@ -20,7 +22,8 @@
     {% endfor %}
     <form method="post" action="{{ path('save_items') }}">
         <input type="text" name="nameOfSkill" placeholder="Add new skills">
-        <button type="submit">Add</button>
+        <button class="btn btn-outline-primary" type="submit">Add</button>
     </form>
     {#    <script>        alert("haha i hacked you")    </script>#}
 </div>
+{% endblock %}

@@ -1,7 +1,9 @@
+{% extends './base.html.twig' %}
+{% block body %}
 <h1 style="color: rgb(239, 105, 66);">Hello Moebel</h1>
 <h3>Here is all todos from other user <span style="color: rgb(239, 105, 66);" >{{ email }}</span></h3>
 <form action="{{ path('table') }}" method="post" style="float: right;">
-    <button type="submit">Go to table</button>
+    <button class="btn btn-outline-primary" type="submit">Go to table</button>
 </form>
 {% for skill in skills %}
     <ul>
@@ -10,3 +12,4 @@
         </li>
     </ul>
 {% endfor %}
+{% endblock %}
