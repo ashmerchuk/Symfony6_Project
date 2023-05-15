@@ -1,18 +1,24 @@
 {% extends './base.html.twig' %}
         {% block body %}
             <div>
-                <h1>Hello moebel!</h1>
-                <form action="{{ path('table') }}" method="post" style="float: right;">
-                    <button class="btn btn-outline-primary" type="submit">Go to table</button>
-                </form>
-                <h2 class="moin">Sign Up</h2>
-                <form method="post" action="{{ path('sign_up') }}">
+                <div class="logout">
+                    <form action="{{ path('table') }}" method="post">
+                        <button class="btn btn-outline-primary" type="submit">Go to table</button>
+                    </form>
+                </div>
+
+                <h1>Hello Moebel!</h1>
+
+                <div><h2>Sign Up</h2></div>
+
+
+                <form class="form" method="post" action="{{ path('sign_up') }}">
                     <input type="email" name="signUpEmail" placeholder="Your email">
                     <input type="password" name="signUpPassword" placeholder="Your password">
                     <button class="btn btn-outline-primary" type="submit">Sign Up</button>
                 </form>
                 {% for message in app.session.flashbag.get('error') %}
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger" role="alert">
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}
@@ -21,9 +27,11 @@
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}
-                <h2>Log In</h2>
-                <p>(If you have already account)</p>
-                <form method="post" action="{{ path('log_in_check') }}">
+
+                <div><h2>Login</h2></div>
+
+                <p class="form">(If you have already account)</p>
+                <form class="form" method="post" action="{{ path('log_in_check') }}">
                     <input type="email" name="logInEmail" placeholder="Your email">
                     <input type="password" name="logInPassword" placeholder="Your password">
                     <button class="btn btn-outline-primary" type="submit">Log in</button>

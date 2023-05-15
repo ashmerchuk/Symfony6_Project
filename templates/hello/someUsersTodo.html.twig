@@ -1,15 +1,18 @@
 {% extends './base.html.twig' %}
 {% block body %}
-<h1 style="color: rgb(239, 105, 66);">Hello Moebel</h1>
-<h3>Here is all todos from other user <span style="color: rgb(239, 105, 66);" >{{ email }}</span></h3>
-<form action="{{ path('table') }}" method="post" style="float: right;">
-    <button class="btn btn-outline-primary" type="submit">Go to table</button>
-</form>
-{% for skill in skills %}
-    <ul>
-        <li>
-            {{ skill }}
-        </li>
-    </ul>
-{% endfor %}
+    <div>
+        <div class="logout">
+            <form action="{{ path('table') }}" method="post">
+                <button class="btn btn-outline-primary" type="submit">Go to table</button>
+            </form>
+        </div>
+        <h3>Here is all todos from other user <span>{{ email }}</span></h3>
+        {% for skill in skills %}
+            <ul>
+                <li>
+                    {{ skill }}
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock %}

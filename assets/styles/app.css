@@ -3,6 +3,11 @@
 h1{
     text-align: center;
     color: rgb(239, 105, 66);
+    margin: 15px 0;
+}
+h2{
+    text-align: center;
+    margin: 20px 0;
 }
 h3{
     text-align: center;
@@ -11,5 +16,42 @@ th{
     text-align: center;
     color: rgb(239, 105, 66);
 }
-
+.form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    margin-left: 10px;
+}
+input{
+    margin-left: 10px;
+    height: 38px;
+}
+.logout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Additional styling for the alert */
+}
+li{
+    font-size: 26px;
+}
+span{
+    color: rgb(239, 105, 66);
+}
 
