@@ -29,12 +29,13 @@ class SignUpSqlRepository
             // email already exists
             return false;
         }
-
-        $stmt = $this->pdo->prepare('INSERT INTO users (email, password) VALUES (:email, :password)');
+        $userPhoto = 'https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png';
+        $stmt = $this->pdo->prepare('INSERT INTO users (email, password, userPhoto) VALUES (:email, :password, :userPhoto)');
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
+        $stmt->bindParam(':userPhoto', $userPhoto);
         $stmt->execute();
         return true;
     }

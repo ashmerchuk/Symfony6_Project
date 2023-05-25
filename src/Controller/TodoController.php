@@ -62,17 +62,4 @@ class TodoController extends AbstractController
         $this->service->deleteTodo($indexOfRemoving);
         return new RedirectResponse('/list');
     }
-    public function editItems(Request $request): RedirectResponse
-    {
-        $indexOfRemoving = $request->get('name');
-        $this->service->deleteTodo($indexOfRemoving);
-        return new RedirectResponse('/list');
-    }
-
-//    public function addUserPhoto(Request $request): RedirectResponse
-//    {
-//        $indexOfRemoving = $request->get('name');
-//        $this->service->deleteTodo($indexOfRemoving);
-//        return new RedirectResponse('/list');
-//    }
 }
