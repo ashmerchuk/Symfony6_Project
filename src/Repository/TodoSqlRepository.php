@@ -38,6 +38,16 @@ class TodoSqlRepository
         return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     }
 
+    public function getUsersPhoto(): array
+    {
+        $userId = $_SESSION['user_id'];
+        $stmt = $this->pdo->prepare("SELECT userPhoto FROM users WHERE id = :userId");
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+    }
+
     public function addTodo(string $todo): void
     {
         session_start();

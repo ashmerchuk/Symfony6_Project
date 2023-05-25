@@ -31,5 +31,9 @@ class TodoService
     {
         return $this->repository->getUserFromSession();
     }
+    public function getUsersPhoto(): array
+    {
+        return $this->repository->getUsersPhoto();
+    }
 
 }

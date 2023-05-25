@@ -6,22 +6,22 @@ namespace Test\Unit\Service;
 
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
-use App\Service\TodoService;
-use App\Repository\TodoSqlRepository;
+use App\Service\AddUsersPhotoService;
+use App\Repository\AddUsersPhotoRepository;
 use PHPUnit\Framework\MockObject\MockObject;
 
 class TodoServiceTest extends TestCase
 {
-    private TodoSqlRepository|MockObject $repositoryMock;
-    private TodoService $service;
+    private AddUsersPhotoRepository|MockObject $repositoryMock;
+    private AddUsersPhotoService $service;
 
     /**
      * @throws Exception
      */
     protected function setUp(): void
     {
-        $this->repositoryMock = $this->createMock(TodoSqlRepository::class);
-        $this->service = new TodoService($this->repositoryMock);
+        $this->repositoryMock = $this->createMock(AddUsersPhotoRepository::class);
+        $this->service = new AddUsersPhotoService($this->repositoryMock);
     }
     public function testAddTodo(): void
     {

@@ -5,16 +5,20 @@ controllers:
     type: attribute
 list_items:
     path: /list
-    methods: GET
+    methods: [GET, POST]
     controller: App\Controller\TodoController::listItems
 save_items:
     path: /save_items
-    methods: POST
+    methods: [GET, POST]
     controller: App\Controller\TodoController::addItems
 delete_items:
     path: /delete_items
     methods: POST
     controller: App\Controller\TodoController::deleteItems
+edit_items:
+    path: /edit_items
+    methods: POST
+    controller: App\Controller\TodoController::editItems
 sign_up:
     path: /sign_up
     methods: POST
@@ -39,4 +43,12 @@ some_users_todo:
     path: /some_users_todo
     methods: [GET, POST]
     controller: App\Controller\SomeUsersTodoController::showSomeUsersTodo
+add_users_photo:
+    path: /add_users_photo
+    methods: [GET, POST]
+    controller: App\Controller\AddUsersPhotoController::addUsersPhoto
+add_url:
+    path: /add_url
+    methods: [GET, POST]
+    controller: App\Controller\AddUsersPhotoController::addUrl
     

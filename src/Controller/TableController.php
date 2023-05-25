@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Service\TableService;
-use App\Service\TodoService;
+use App\Service\AddUsersPhotoService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -6,19 +6,19 @@ namespace Unit;
 
 use PDO;
 use PHPUnit\Framework\TestCase;
-use App\Repository\TodoSqlRepository;
-use App\Service\TodoService;
+use App\Repository\AddUsersPhotoRepository;
+use App\Service\AddUsersPhotoService;
 
 class TodoSqlRepositoryTest extends TestCase
 {
-    private TodoSqlRepository $repository;
-    private TodoService $service;
+    private AddUsersPhotoRepository $repository;
+    private AddUsersPhotoService $service;
 
     protected function setUp(): void
     {
         $pdo = new PDO('sqlite:./sk.db');
-        $this->repository = new TodoSqlRepository($pdo);
-        $this->service = new TodoService($this->repository);
+        $this->repository = new AddUsersPhotoRepository($pdo);
+        $this->service = new AddUsersPhotoService($this->repository);
     }
     public function testDeleteTodo(): void
     {

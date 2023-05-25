@@ -67,4 +67,7 @@ span{
     position: absolute;
     z-index: 1;
 }
-
+.userPhoto{
+    width: 72px;
+    height: 72px;
+}

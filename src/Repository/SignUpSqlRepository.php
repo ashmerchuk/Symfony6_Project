@@ -14,7 +14,7 @@ class SignUpSqlRepository
 
     public function createTable(): void
     {
-        $this->pdo->exec("CREATE TABLE IF NOT EXISTS users (id  INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT)");
+        $this->pdo->exec("CREATE TABLE IF NOT EXISTS users (id  INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, password TEXT, userPhoto TEXT)");
     }
 
     public function addUser(string $email, string $password): bool

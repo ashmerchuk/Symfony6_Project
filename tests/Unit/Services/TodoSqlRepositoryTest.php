@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Repository;
 
-use App\Repository\TodoSqlRepository;
+use App\Repository\AddUsersPhotoRepository;
 use PDO;
 use PDOStatement;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -12,13 +12,13 @@ use PHPUnit\Framework\TestCase;
 
 class TodoSqlRepositoryTest extends TestCase
 {
-    private TodoSqlRepository|MockObject $pdoMock;
-    private TodoSqlRepository $sut;
+    private AddUsersPhotoRepository|MockObject $pdoMock;
+    private AddUsersPhotoRepository $sut;
 
     protected function setUp(): void
     {
         $this->pdoMock = $this->createMock(PDO::class);
-        $this->sut = new TodoSqlRepository($this->pdoMock);
+        $this->sut = new AddUsersPhotoRepository($this->pdoMock);
     }
     public function testGetAllTodos(): void
     {
