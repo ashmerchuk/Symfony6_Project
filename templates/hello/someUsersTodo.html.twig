@@ -10,12 +10,36 @@
             </form>
         </div>
         <h3>Here is all todos from other user <span>{{ email }}</span></h3>
-        {% for skill in skills %}
-            <ul>
-                <li>
-                    {{ skill }}
-                </li>
-            </ul>
-        {% endfor %}
+        <section class="vh-100">
+            <div class="row d-flex justify-content-center h-100">
+                <div class="col col-lg-9 col-xl-7">
+                    <div class="card rounded-3">
+                        <div class="card-body p-4">
+                            <table class="table table-hover table mb-4">
+                                <thead>
+                                <tr>
+                                    <th style="color: black" scope="col">No.</th>
+                                    <th style="color: black" scope="col">Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for skill in skills %}
+                                    <tr>
+                                        <td>
+                                            {{ loop.index }}
+                                        </td>
+                                        <div class="form">
+                                            <td>
+                                                {{ skill }}
+                                            </td>
+                                        </div>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 {% endblock %}
