@@ -19,7 +19,7 @@ class TableSqlRepository
 
     public function getAllTodos(): array
     {
-        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email FROM allSkills LEFT JOIN users ON allSkills.userId = users.id WHERE users.email IS NOT NULL");
+        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email, users.userPhoto FROM allSkills LEFT JOIN users ON allSkills.userId = users.id WHERE users.email IS NOT NULL");
         if ($stmt->rowCount() == 0) {
             $this->createTable();
         }
@@ -31,7 +31,7 @@ class TableSqlRepository
     public function getAllSortedByNameTodos($sortedByName): array
     {
         $sortedByName ? $sortedByName = "DESC" : $sortedByName = "ASC";
-        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email FROM allSkills LEFT JOIN users ON allSkills.userId = users.id WHERE users.email IS NOT NULL ORDER BY allSkills.nameOfTodo $sortedByName");
+        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email, users.userPhoto FROM allSkills LEFT JOIN users ON allSkills.userId = users.id WHERE users.email IS NOT NULL ORDER BY allSkills.nameOfTodo $sortedByName");
 
         if ($stmt->rowCount() == 0) {
             $this->createTable();
@@ -43,7 +43,7 @@ class TableSqlRepository
     public function getAllSortedByEmailTodos($sortedByEmail): array
     {
         $sortedByEmail ? $sortedByEmail = "DESC" : $sortedByEmail = "ASC";
-        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email FROM allSkills LEFT JOIN users ON allSkills.userId = users.id WHERE users.email IS NOT NULL ORDER BY users.email $sortedByEmail");
+        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email, users.userPhoto FROM allSkills LEFT JOIN users ON allSkills.userId = users.id WHERE users.email IS NOT NULL ORDER BY users.email $sortedByEmail");
 
 
         if ($stmt->rowCount() == 0) {

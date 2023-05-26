@@ -17,6 +17,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
+                <th>User's Photo</th>
                 <form method="post" action=" {{ path ('table') }}">
                     <th>
                         <input type="hidden" name="sortName" value="{{ sortName ? 0 : 1 }}">
@@ -43,7 +44,15 @@
                 <tr>
                     <form method="post" action="{{ path('some_users_todo') }}">
                         <input type="hidden" name="email" value="{{ skill.email }}">
-
+                        <td style="text-align: center;">
+                            <img class="userPhoto"
+                                 {% if  skill.userPhoto is null %}
+                                     src="https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png"
+                                 {% else %}
+                                     src="{{ skill.userPhoto }}"
+                                 {% endif %}
+                            >
+                        </td>
                         <td style="text-align: center;">{{ skill.nameOfTodo }}</td>
                         <td style="text-align: center;">{{ skill.email }}  </td>
                         <td style="text-align: center">
