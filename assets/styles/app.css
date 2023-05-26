@@ -69,9 +69,12 @@ span{
     z-index: 1;
 }
 .userPhoto{
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
 }
 td{
     text-align: center;
+}
+.successButton:hover{
+    background-color: #79d782;
 }
