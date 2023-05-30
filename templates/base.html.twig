@@ -28,6 +28,13 @@
             <nav class="navbar" style="background-color: #ffffff;">
                         <ul class="nav nav-pills justify-content-end">
                             <li class="nav-item">
+                                <form action="{{ path('list_items') }}" method="post">
+                                    <button style="color: #000000; font-size: 20px" title="Go to todos" class="nav-link" type="submit">
+                                        Home
+                                    </button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
                                 <form action="{{ path('table') }}" method="post">
                                     <button style="color: #000000; font-size: 20px" title="Go to table" class="nav-link" type="submit">
                                         Table
