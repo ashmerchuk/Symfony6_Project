@@ -24,6 +24,25 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <nav class="navbar" style="background-color: #ffffff;">
+                        <ul class="nav nav-pills justify-content-end">
+                            <li class="nav-item">
+                                <form action="{{ path('table') }}" method="post">
+                                    <button style="color: #000000; font-size: 20px" title="Go to table" class="nav-link" type="submit">
+                                        Table
+                                    </button>
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <form action="{{ path('log_in') }}" method="get">
+                                    <button style="color: #000000; font-size: 20px" class="nav-link" title="Login" type="submit">
+                                        SignUp/Login
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+            </nav>
+        {% endblock %}
     </body>
 </html>
