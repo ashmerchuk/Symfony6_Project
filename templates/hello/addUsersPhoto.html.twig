@@ -44,5 +44,16 @@
                     </button>
                 </div>
             </div>
+            <div class="form" style="margin-top: 20%">
+                <h1>Delete Account!</h1>
+            </div>
+
+            <form class="form" method="POST"
+                      action="{{ path('delete_account') }}"
+                >
+                    <button
+                        class="btn btn-outline-danger"
+                        type="submit">Delete</button>
+                </form>
         {% endblock body %}
 

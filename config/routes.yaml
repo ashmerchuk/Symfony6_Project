@@ -51,4 +51,8 @@ add_url:
     path: /add_url
     methods: [GET, POST]
     controller: App\Controller\AddUsersPhotoController::addUrl
+delete_account:
+    path: /delete_account
+    methods: [ GET, POST ]
+    controller: App\Controller\AddUsersPhotoController::deleteAccount
     

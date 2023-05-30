@@ -18,4 +18,9 @@ class AddUsersPhotoService
         $this->repository->addPhotosUrl($sanitisePhoto);
     }
 
+    public function deleteUser($sanitiseUsersAccount): void
+    {
+        $this->repository->deleteUser($sanitiseUsersAccount);
+    }
+
 }

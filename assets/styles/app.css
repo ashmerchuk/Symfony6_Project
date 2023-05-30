@@ -47,6 +47,7 @@ input{
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 10px;
     /* Additional styling for the alert */
 }
 li{

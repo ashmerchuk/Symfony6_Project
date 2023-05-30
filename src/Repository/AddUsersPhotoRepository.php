@@ -19,9 +19,6 @@ class AddUsersPhotoRepository
 
     public function addPhotosUrl(string $photoUrl): void
     {
-
-
-
         session_start();
         $userId = $_SESSION['user_id'];
 
@@ -45,5 +42,14 @@ class AddUsersPhotoRepository
         $stmt->bindValue(':userPhoto', $photoUrl);
         $stmt->bindValue(':userId', $userId);
         $stmt->execute();
+    }
+
+    public function deleteUser($user_id): void
+    {
+        $stmt1 = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
+        $stmt2 = $this->pdo->prepare("DELETE FROM allSkills WHERE userId = ?");
+
+        $stmt1->execute([$user_id]);
+        $stmt2->execute([$user_id]);
     }
 }

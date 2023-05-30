@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class AddUsersPhotoController extends AbstractController
 {
@@ -56,5 +57,15 @@ class AddUsersPhotoController extends AbstractController
         $photoUrl = $request->get('photoUrl');
         $this->service->addPhotosUrl($photoUrl);
         return new RedirectResponse('/list');
+    }
+
+  public function deleteAccount(Request $request, SessionInterface $session): RedirectResponse
+    {
+        session_start();
+        $user_id = $_SESSION['user_id'];
+        $this->service->deleteUser($user_id);
+        session_unset();
+        $session->getFlashBag()->add('deleted_user', 'User has been deleted');
+        return new RedirectResponse('/log_in');
     }
 }
