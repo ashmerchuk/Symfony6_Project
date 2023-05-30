@@ -50,7 +50,19 @@ class TableController extends AbstractController
                 ]
             );
         }
-
+        if(isset($_POST['todo_search'])) {
+            if ($_POST['todo_search'] !== '') {
+                $todoSearch = $_POST['todo_search'];
+                return $this->render(
+                    'hello/table.html.twig',
+                    [
+                        'skills' => $this->service->getSearchedTodos($todoSearch),
+                        'sortName' => $sortName,
+                        'sortEmail' => $sortEmail,
+                    ]
+                );
+            }
+        }
         return $this->render(
             'hello/table.html.twig',
             [

@@ -27,6 +27,22 @@ class TableSqlRepository
         return $stmt->fetchAll();
     }
 
+    public function getSearchedTodos($todoSearch): array
+    {
+        $stmt = $this->pdo->prepare("SELECT allSkills.nameOfTodo, users.email, users.userPhoto
+                                FROM allSkills
+                                LEFT JOIN users ON allSkills.userId = users.id
+                                WHERE users.email IS NOT NULL
+                                AND allSkills.nameOfTodo LIKE :searchTerm");
+
+        $stmt->bindValue(':searchTerm', '%' . $todoSearch . '%');
+        if ($stmt->rowCount() == 0) {
+            $this->createTable();
+        }
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 
     public function getAllSortedByNameTodos($sortedByName): array
     {

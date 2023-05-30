@@ -18,6 +18,11 @@ class TableService
         return $this->repository->getAllTodos();
     }
 
+    public function getSearchedTodos($todoSearch): array
+    {
+        return $this->repository->getSearchedTodos($todoSearch);
+    }
+
     public function getAllSortedByNameTodos($sortedBy): array
     {
         return $this->repository->getAllSortedByNameTodos($sortedBy);
