@@ -40,7 +40,8 @@ class LoginController extends AbstractController
 
     public function logOut(): Response
     {
-        unset($_SESSION['email'], $_SESSION['password'], $_SESSION['userId']);
+        session_start();
+        session_unset();
         return new RedirectResponse('/log_in');
     }
 }
