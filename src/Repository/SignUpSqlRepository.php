@@ -25,8 +25,9 @@ class SignUpSqlRepository
         }
         $stmt->execute(['email' => $email]);
         $user = $stmt->fetch();
-        if ($user) {
-            // email already exists
+
+        if ($user || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            // email already exists or email is invalid
             return false;
         }
         $userPhoto = 'https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png';
