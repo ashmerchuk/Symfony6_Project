@@ -79,3 +79,12 @@ td{
 .successButton:hover{
     background-color: #79d782;
 }
+.emptyButton{
+    font-size: 14px;
+    margin-top: 15px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    color: blue;
+}

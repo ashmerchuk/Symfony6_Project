@@ -1,0 +1,11 @@
+{% extends './base.html.twig' %}
+        {% block body %}
+            {{ parent() }}
+            <div>
+                <h3>Type your email to get a message with a password</h3>
+                <form class="form" method="post" action="{{ path('send_forgot_email') }}">
+                    <input type="email" name="forgot_email" placeholder="Email">
+                    <button class="btn btn-outline-primary" type="submit">Send email</button>
+                </form>
+            </div>
+        {% endblock %}

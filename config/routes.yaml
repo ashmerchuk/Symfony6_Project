@@ -55,4 +55,20 @@ delete_account:
     path: /delete_account
     methods: [ GET, POST ]
     controller: App\Controller\AddUsersPhotoController::deleteAccount
+forgot_email:
+    path: /forgot_email
+    methods: [ GET, POST ]
+    controller: App\Controller\LoginController::forgotEmail
+send_forgot_email:
+    path: /send_forgot_email
+    methods: [ GET, POST ]
+    controller: App\Controller\LoginController::sendForgotEmail
+reset_page:
+    path: /reset_page
+    methods: [ GET, POST ]
+    controller: App\Controller\LoginController::resetPage
+reset_type_new_password:
+    path: /reset_type_new_password
+    methods: [ GET, POST ]
+    controller: App\Controller\LoginController::resetTypeNewPassword
     

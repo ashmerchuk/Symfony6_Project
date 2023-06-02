@@ -1,0 +1,14 @@
+{% extends './base.html.twig' %}
+        {% block body %}
+            {{ parent() }}
+            <div>
+                <h3>Type your new password</h3>
+                <form class="form" method="post"
+                      action="{{ path('reset_type_new_password') }}"
+                >
+                    <input type="password" name="new_password" placeholder="New Password" required>
+                    <button class="btn btn-outline-primary" type="submit">Confirm</button>
+                </form>
+            </div>
+
+        {% endblock %}

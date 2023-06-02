@@ -24,4 +24,14 @@ class LoginRepository
         return null;
     }
 
+    public function checkForgotEmail(string $email): ?bool
+    {
+        $stmt = $this->pdo->prepare('SELECT COUNT(*) FROM users WHERE email = :email');
+        $stmt->execute(['email' => $email]);
+        $count = $stmt->fetchColumn();
+        if($count > 0) {
+            return true;
+        }
+        return false;
+    }
 }

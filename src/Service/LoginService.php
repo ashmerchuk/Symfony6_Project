@@ -17,4 +17,9 @@ class LoginService
     {
         return $this->repository->checkUser($sanitiseEmail, $sanitisePassword);
     }
+
+    public function checkForgotEmail(string $sanitiseEmail): ?bool
+    {
+        return $this->repository->checkForgotEmail($sanitiseEmail);
+    }
 }

@@ -17,4 +17,9 @@ class SignUpService
     {
         return $this->repository->addUser($sanitiseEmail, $sanitisePassword);
     }
+
+    public function updateUsersPassword($sanitiseEmail, $sanitisePassword): bool
+    {
+        return $this->repository->updateUsersPassword($sanitiseEmail, $sanitisePassword);
+    }
 }

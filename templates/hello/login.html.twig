@@ -6,8 +6,20 @@
 
                 <div><h2>Sign Up</h2></div>
 
-                {% for message in app.session.flashbag.get('deleted_user') %}
+                {% set flashMessages = app.session.flashbag.get('deleted_user') %}
+                {% set flashMessages = flashMessages|merge(app.session.flashbag.get('email_exist_error')) %}
+
+                {% for message in flashMessages %}
                     <div id="flash-message" class="alert alert-danger">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+
+                {% set flashMessages = app.session.flashbag.get('check_email') %}
+                {% set flashMessages = flashMessages|merge(app.session.flashbag.get('confirm_changed_password')) %}
+
+                {% for message in flashMessages %}
+                    <div id="flash-message" class="alert alert-success">
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}
@@ -47,6 +59,10 @@
                         <p>{{ message }}</p>
                     </div>
                 {% endfor %}
+
+                <form class="form" method="post" action="{{ path('forgot_email') }}">
+                    <button class="emptyButton" type="submit">Forgot password</button>
+                </form>
             </div>
 
             <script>

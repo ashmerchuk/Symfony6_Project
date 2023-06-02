@@ -31,14 +31,14 @@ class AddUsersPhotoController extends AbstractController
 
         $imageUrl = $this->todoService->getUsersPhoto()[0];
         if($imageUrl == ''){
-            $usersPhoto = ['https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'];
+            $usersPhoto = ['https://media.istockphoto.com/id/1270368615/vi/vec-to/vector-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ch%C3%A2n-dung-avatar-logo-k%C3%BD-t%C3%AAn-ng%C6%B0%E1%BB%9Di-h%C3%ACnh-d%E1%BA%A1ng.jpg?s=170667a&w=0&k=20&c=ycMlYTlzniKEIoKNYv7Sax0zNSr0CS8amRMLb6qXzds='];
         }
         else {
             $imageHeaders = @get_headers($imageUrl);
             if ($imageHeaders && str_contains($imageHeaders[0], '200')) {
                 $usersPhoto = $this->todoService->getUsersPhoto();
             } else {
-                $usersPhoto = ['https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'];
+                $usersPhoto = ['https://media.istockphoto.com/id/1270368615/vi/vec-to/vector-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ch%C3%A2n-dung-avatar-logo-k%C3%BD-t%C3%AAn-ng%C6%B0%E1%BB%9Di-h%C3%ACnh-d%E1%BA%A1ng.jpg?s=170667a&w=0&k=20&c=ycMlYTlzniKEIoKNYv7Sax0zNSr0CS8amRMLb6qXzds='];
             }
         }
 
