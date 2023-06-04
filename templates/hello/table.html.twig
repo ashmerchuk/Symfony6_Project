@@ -10,54 +10,58 @@
             <input type="text" placeholder="Search todos" name="todo_search">
             <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Users</th>
-                <form method="post" action=" {{ path ('table') }}">
-                    <th>
-                        <input type="hidden" name="sortName" value="{{ sortName ? 0 : 1 }}">
-                        <button class="btn btn-outline-danger"
-                                title="Click to sort"
-                                type="submit">Name's of Todos
-                        </button>
-                    </th>
-                </form>
-                <form method="post" action=" {{ path ('table') }}">
-                    <th>
-                        <input type="hidden" name="sortEmail" value="{{ sortEmail ? 0 : 1 }}">
-                        <button class="btn btn-outline-danger"
-                                title="Click to sort"
-                                type="submit">Emails
-                        </button>
-                    </th>
-                </form>
-                <th>Options</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for skill in skills %}
+            <table style="margin-top: 25px" class="table table-hover">
+                <thead>
                 <tr>
-                    <form method="post" action="{{ path('some_users_todo') }}">
-                        <input type="hidden" name="email" value="{{ skill.email }}">
-                        <td style="text-align: center;">
-                            <img class="userPhoto" style="width: 36px; height: 36px;"
-                                 {% if skill.userPhoto is null %}
-                                     src="https://media.istockphoto.com/id/1270368615/vi/vec-to/vector-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ch%C3%A2n-dung-avatar-logo-k%C3%BD-t%C3%AAn-ng%C6%B0%E1%BB%9Di-h%C3%ACnh-d%E1%BA%A1ng.jpg?s=170667a&w=0&k=20&c=ycMlYTlzniKEIoKNYv7Sax0zNSr0CS8amRMLb6qXzds="
-                                 {% else %}
-                                     src="{{ skill.userPhoto }}"
-                                 {% endif %}
-                            >
-                        </td>
-                        <td style="text-align: center;">{{ skill.nameOfTodo }}</td>
-                        <td style="text-align: center;">{{ skill.email }}  </td>
-                        <td style="text-align: center">
-                            <button class="btn btn-outline-primary" type="submit"> See User</button>
-                        </td>
+                    <th><span style="color: black">No.</span></th>
+                    <th><span style="color: black">Users</span></th>
+                    <form method="post" action=" {{ path ('table') }}">
+                        <th>
+                            <input type="hidden" name="sortName" value="{{ sortName ? 0 : 1 }}">
+                            <button class="btn btn-outline-danger"
+                                    title="Click to sort"
+                                    type="submit">Name's of Todos
+                            </button>
+                        </th>
                     </form>
+                    <form method="post" action=" {{ path ('table') }}">
+                        <th>
+                            <input type="hidden" name="sortEmail" value="{{ sortEmail ? 0 : 1 }}">
+                            <button class="btn btn-outline-danger"
+                                    title="Click to sort"
+                                    type="submit">Emails
+                            </button>
+                        </th>
+                    </form>
+                    <th><span style="color: black">Options</span></th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for skill in skills %}
+                    <tr>
+                        <td>
+                            {{ loop.index }}
+                        </td>
+                        <form method="post" action="{{ path('some_users_todo') }}">
+                            <input type="hidden" name="email" value="{{ skill.email }}">
+                            <td style="text-align: center;">
+                                <img class="userPhoto" style="width: 36px; height: 36px;"
+                                    {% if skill.userPhoto is null %}
+                                        src="https://media.istockphoto.com/id/1270368615/vi/vec-to/vector-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ch%C3%A2n-dung-avatar-logo-k%C3%BD-t%C3%AAn-ng%C6%B0%E1%BB%9Di-h%C3%ACnh-d%E1%BA%A1ng.jpg?s=170667a&w=0&k=20&c=ycMlYTlzniKEIoKNYv7Sax0zNSr0CS8amRMLb6qXzds="
+                                    {% else %}
+                                        src="{{ skill.userPhoto }}"
+                                    {% endif %}
+                                >
+                            </td>
+                            <td style="text-align: center;">{{ skill.nameOfTodo }}</td>
+                            <td style="text-align: center;">{{ skill.email }}  </td>
+                            <td style="text-align: center">
+                                <button class="btn btn-outline-primary" type="submit"> See User</button>
+                            </td>
+                        </form>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
     </div>
 {% endblock %}
