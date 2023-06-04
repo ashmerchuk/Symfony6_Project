@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mailer\Transport;
+use Symfony\Component\Mime\Email;
 
 class LoginController extends AbstractController
 {
@@ -54,7 +58,11 @@ class LoginController extends AbstractController
         );
 
     }
-    public function  sendForgotEmail(Request $request, SessionInterface $session): Response
+
+    /**
+     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     */
+    public function  sendForgotEmail(Request $request, SessionInterface $session, MailerInterface $mailer): Response
     {
         session_start();
         $usersEmail = $request->get('forgot_email');
@@ -77,15 +85,20 @@ class LoginController extends AbstractController
         $newUrl = str_replace("/send_forgot_email", "", $url);
 
         $resetLink = $newUrl ."/reset_page?token=" . urlencode($resetToken);
-        $to = $usersEmail;
         $subject = "Password Reset";
         $message = "Click the following link to reset your password: <a href=\"$resetLink\">Reset Password</a>";
 
-        $headers = "From: your_email@example.com";
-        $headers .= "\r\n";
-        $headers .= "Content-Type: text/html; charset=UTF-8";
+        $transport = Transport::fromDsn('smtp://johndoegofer@gmail.com:fpidtafftygiqccr@smtp.gmail.com:587');
+        // Create a Mailer object
+        $mailer = new Mailer($transport);
 
-        mail($to, $subject, $message, $headers);
+        $email = (new Email())
+            ->from('johndoegofer@gmail.com')
+            ->to($usersEmail)
+            ->subject($subject)
+            ->html($message);
+
+        $mailer->send($email);
 
         $session->getFlashBag()->add('check_email', 'Check your email to reset password');
         return new RedirectResponse('/log_in');

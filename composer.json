@@ -9,6 +9,7 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-pdo": "*",
         "doctrine/dbal": "^3.6",
         "doctrine/doctrine-bundle": "^2.9",
         "doctrine/doctrine-migrations-bundle": "^3.2",
@@ -18,13 +19,19 @@
         "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.2.*",
+        "symfony/google-mailer": "6.2.*",
+        "symfony/http-client": "6.2.*",
+        "symfony/infobip-mailer": "6.2.*",
+        "symfony/mailchimp-mailer": "6.2.*",
+        "symfony/mailer": "6.2.*",
+        "symfony/messenger": "6.2.*",
         "symfony/monolog-bundle": "*",
         "symfony/runtime": "6.2.*",
+        "symfony/sendgrid-mailer": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
+        "symfony/webpack-encore-bundle": "*",
         "symfony/yaml": "6.2.*",
-        "twig/extra-bundle": "*",
-        "ext-pdo": "*",
-        "ext-http": "*"
+        "twig/extra-bundle": "*"
     },
     "config": {
         "allow-plugins": {
@@ -76,17 +83,10 @@
         }
     },
     "require-dev": {
-        "moebel-de/php-code-style-settings": "^1.0",
         "phpunit/phpunit": "^10.1",
         "symfony/debug-bundle": "6.2.*",
         "symfony/maker-bundle": "^1.48",
         "symfony/stopwatch": "6.2.*",
         "symfony/web-profiler-bundle": "6.2.*"
-    },
-    "repositories": {
-        "php-code-style-settings": {
-            "type": "git",
-            "url": "git@gitlab.production.moebel.de:workspace/discovery/php-code-style-settings.git"
-        }
     }
 }
